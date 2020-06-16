@@ -19,7 +19,7 @@ default_args = {
 with models.DAG('hourly_ingest_metro_vancouver', schedule_interval='@hourly', default_args=default_args) as dag:
 
     datetime_str = (datetime.datetime.now(tz=pytz.timezone('America/Vancouver')) - datetime.timedelta(hours=1)).strftime('%Y-%m-%d %H:%M')
-    docker_cmd = 'python main.py --location=vancouver --window_datetime_start={} \
+    docker_cmd = f'python main.py --location=vancouver --window_datetime_start={datetime_str} \
     --window_length_hours=1 --cloud_function_endpoint=https://us-central1-rental-housing-project.cloudfunctions.net/clscraper'
 
     start_docker = docker_operator.DockerOperator(
