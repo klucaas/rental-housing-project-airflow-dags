@@ -2,17 +2,14 @@ import datetime
 import pytz
 from airflow import models
 from airflow.operators import docker_operator
-from airflow.contrib.sensors import gcs_sensor
-from airflow.contrib.operators import spark_submit_operator
-from airflow.contrib.operators import kubernetes_pod_operator
 
 
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
     'start_date': datetime.utcnow(),
-    'email': ['airflow@example.com'],
-    'email_on_failure': False,
+    'email': ['klucas.schwartz@gmail.com'],
+    'email_on_failure': True,
     'email_on_retry': False,
     'retries': 1,
     'retry_delay': datetime.timedelta(minutes=5)
