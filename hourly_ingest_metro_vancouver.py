@@ -7,7 +7,7 @@ from airflow.operators import docker_operator
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime.utcnow(),
+    'start_date': datetime.datetime.utcnow(),
     'email': ['klucas.schwartz@gmail.com'],
     'email_on_failure': True,
     'email_on_retry': False,
